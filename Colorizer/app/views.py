@@ -21,7 +21,6 @@ def index(request):
             fs = FileSystemStorage()
             filename = fs.save(image.name, image)
             demo.guess()
-            context['success'] = 'success'
     else:
         form = ImageForm()
 

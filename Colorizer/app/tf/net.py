@@ -24,6 +24,14 @@ class Net(object):
     if net_params:
       self.weight_decay = float(net_params['weight_decay'])
 
+  def encode(self, data_l):
+    model = self.inference(data_l)
+    saver = tf.train.Saver()
+    with tf.Session() as sess:
+      saver.restore(sess, 'app/tf/models/model.ckpt')
+      model = sess.run(model)
+    return model
+  
   def inference(self, data_l):
     #conv1
     conv_num = 1

@@ -17,12 +17,7 @@ def guess():
     #data_l = tf.placeholder(tf.float32, shape=(None, None, None, 1))
     autocolor = Net(train=False)
 
-    conv8_313 = autocolor.inference(data_l)
+    model = autocolor.encode(data_l)
 
-    saver = tf.train.Saver()
-    with tf.Session() as sess:
-      saver.restore(sess, 'app/tf/models/model.ckpt')
-      conv8_313 = sess.run(conv8_313)
-
-    img_rgb = decode(data_l, conv8_313,2.63)
+    img_rgb = decode(data_l, model,2.63)
     imsave('static/color.jpg', img_rgb)
