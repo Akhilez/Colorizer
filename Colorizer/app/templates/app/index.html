@@ -1,35 +1,42 @@
-<html>
+{% extends 'app/base.html' %}
 
-<head>
+{% block maincontent %}
 
-</head>
+<div class="main" align="center">
 
-<body>
 
-<form enctype="multipart/form-data" method="post" action="">
+  <form enctype="multipart/form-data" method="post" action="">{% csrf_token %}
+<label class="btn btn-default btn-file">
+    Upload Image<input type="file" id="uploadImage" name="image" accept="image/jpg" style="display: none;" />
+  </label>
 
-{% csrf_token %}
+    <input type="submit" value="Submit" class="btn btn-default" />
+    <br/><br/>
 
-{{ form }}
-<input type="submit" value="Submit" />
+  </form>
 
-</form>
+  {{ error }}
 
-{{ error }}
+  {% if success %}
 
-{% load static %}
-<a href="{% static "color.jpg" %}" target="_blank">View full size</a><br/>
-<img src="{% static "color.jpg" %}" alt="No Image" class="NO-CACHE" width="300px" height="300px">
-<img src="{% static "gray.jpg" %}" alt="No Image" class="NO-CACHE" width="300px" height="300px">
+    {% load static %}
+    <a href="{% static "color.jpg" %}" target="_blank">View full size</a><br/>
+    <img src="{% static "gray.jpg" %}" alt="No Image" class="NO-CACHE" width="300px" height="300px">
+    <img src="{% static "color.jpg" %}" alt="No Image" class="NO-CACHE" width="300px" height="300px">
 
-<script>
-var nods = document.getElementsByClassName('NO-CACHE');
-for (var i = 0; i < nods.length; i++)
-{
-    nods[i].attributes['src'].value += "?a=" + Math.random();
-}
-</script>
+    <script>
+    var nods = document.getElementsByClassName('NO-CACHE');
+    for (var i = 0; i < nods.length; i++)
+    {
+        nods[i].attributes['src'].value += "?a=" + Math.random();
+    }
 
-</body>
 
-</html>
+    </script>
+
+  {% endif %}
+
+
+</div>
+
+{% endblock %}

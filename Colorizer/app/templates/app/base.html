@@ -2,73 +2,35 @@
 <html style="height: 100%">
 <head lang="en">
     <meta charset="UTF-8">
-    <title>{% block title %}Colorizer{% endblock %}</title>
-    {% block staticfiles %}{% endblock %}
+    <title>Colorizer</title>
     {% load static %}
 
-
+    <link rel="stylesheet" href="{% static 'index.css' %}">
     <link rel="stylesheet" href="{% static 'bootstrap/bootstrap.css' %}">
     <link rel="stylesheet" href="{% static 'bootstrap/bootstrap-theme.css' %}">
-    <link rel="stylesheet" href="{% static 'fonts/font-awesome.css' %}">
-    <link rel="stylesheet" href="{% static 'analytics/metisMenu/bootstrap.min.css' %}">
 
-    <style>
-        .w3-bar .w3-button {
-            padding: 16px;
-        }
-    </style>
-    {% block head %}{% endblock %}
 </head>
-<body style="{% block body_color %}align:center;{% endblock %} height: 100%">
+<body >
+
+  <nav class="navbar navbar-default">
+    <div class="container-fluid container">
+      <div class="navbar-header">
+        <a class="navbar-brand img" style="padding:0px;" href=""><img src="{% static 'kmitlogo.jpg' %}" width="60px" height="50px"></a>
+      </div>
+      <ul class="nav navbar-nav">
+        <li><a href="">Colorizer!</a></li>
+      </ul>
+    </div>
+  </nav>
 
 <script src="{% static 'bootstrap/jquery.js' %}"></script>
 <script src="{% static 'bootstrap/bootstrap.min.js' %}"></script>
 
 
-{% block navbar %}
-<div class="w3-top">
-    <div class="w3-bar w3-white w3-card-2" id="myNavbar" style="background-color:white;">
-        {% load static %}
-        <a href="/" class="w3-bar-item"><img src="{% static 'kmitlogo.jpg' %}" height="38px"></a>
-        <a href="/" class="w3-bar-item w3-button w3-wide">Colorizer</a>
-        <div class="w3-left w3-hide-small">
-            {% block leftlinks %}
-                <!--FORMAT = <a href="/" class="w3-bar-item w3-button">Home</a>-->
-            {% endblock leftlinks %}
-        </div>
-        <div class="w3-right w3-hide-small">
-            {% block rightlinks %}
-                <!--FORMAT = <a href="/" class="w3-bar-item w3-button"><i class="fa fa-th"></i> LOGOUT</a>-->
-            {% endblock rightlinks %}
-        </div>
-        <!-- Hide right-floated links on small screens and replace them with a menu icon -->
-        <a href="javascript:void(0)" class="w3-bar-item w3-button w3-right w3-hide-large w3-hide-medium"
-           onclick="w3_open()">
-            <i class="fa fa-bars w3-padding-right w3-padding-left"></i>
-        </a>
-    </div>
-</div>
-
-<!-- Sidenav on small screens when clicking the menu icon -->
-<nav class="w3-sidenav w3-black w3-card-2 w3-animate-left w3-hide-medium w3-hide-large" style="display:none" id="mySidenav">
-    <a href="javascript:void(0)" onclick="w3_close()" class="w3-large w3-padding-16">Close ×</a>
-    <a href="#about" onclick="w3_close()">ABOUT</a>
-    <a href="#" onclick="w3_close()">PROFILE</a>
-    <a href="#" onclick="w3_close()">SOMETHING</a>
-    <a href="#contact" onclick="w3_close()">CONTACT</a>
-</nav>
-{% endblock %}
-
-{% block fullcontent %}
-<div class="container" style="align:center;{% block container_color %}background-color: #ffffff; {% endblock %} padding-top: {% block full_pad_top %}75px{% endblock %};">
+<div class="container">
     {% block maincontent %}
     {% endblock %}
 </div>
-{% endblock fullcontent %}
-
-{% block footer %}
-{% endblock %}
-
 
 </body>
 </html>
