@@ -1,0 +1,5 @@
+Colorizer/app/tf/models/model.ckpt
+Colorizer/static/color.jpg
+Colorizer/static/gray.jpg
+**/__pycache__
+*.pyc
