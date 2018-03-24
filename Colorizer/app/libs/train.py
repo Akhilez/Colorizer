@@ -4,6 +4,7 @@ Created on Sat Mar 24 13:00:43 2018
 
 @author: Rajkumar
 """
+
 import numpy as np
 import utils
 from skimage.io import imsave
@@ -12,8 +13,7 @@ from Net import Net
 from keras.models import load_model
 from keras.models import model_from_json
 
-
-
+# Get Train Data.
 TRAIN_FOLDER = 'Train/'
 TRAIN_DATA = utils.get_train_data(TRAIN_FOLDER)
 TRAIN_DATA_SIZE = len(TRAIN_DATA)
@@ -25,23 +25,17 @@ CNN = net.encode()
 # Define BatchSize
 BATCH_SIZE = 50
 
-
 # Train model
-'''train_batch = utils.image_l_a_b_gen(TRAIN_DATA, BATCH_SIZE)
-CNN.fit_generator(train_batch, epochs=100)
+train_batch = utils.image_l_a_b_gen(TRAIN_DATA, BATCH_SIZE)
+CNN.fit_generator(train_batch, epochs=1000)
 
 # Save model
-model_json = CNN.to_json()
-with open("model.json", "w") as json_file:
-    json_file.write(model_json)
-CNN.save_weights("model.h5")'''
+model.save("model.h5")
 
-# Model reconstruction from JSON file
-with open('model.json', 'r') as f:
-    model = model_from_json(f.read())
-
-# Load weights into the new model
-model.load_weights('model.h5')
+'''
+UnComment this to test the model
+# Load model
+model.load("model.h5")
 
 # Test model
 TEST_FOLDER = 'Test/'
@@ -60,7 +54,7 @@ for i in range(len(test_a_b)):
     cur[:, :, 0] = Xtest_l[i][:, :, 0]
     cur[:, :, 1:] = test_a_b[i]
     imsave("img_"+str(i)+".png", lab2rgb(cur))
-
+'''
 
 
 
