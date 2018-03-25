@@ -19,5 +19,5 @@ def guess():
 
     model = autocolor.encode(data_l)
 
-    img_rgb = decode(data_l, model,2.63)
+    img_rgb = decode(data_l, model)
     imsave('static/color.jpg', img_rgb)

@@ -270,7 +270,7 @@ def softmax(x):
     return e_x / np.expand_dims(e_x.sum(axis=-1), axis=-1) # only difference
 
 
-def decode(data_l, conv8_313, rebalance=1):
+def decode(data_l, conv8_313, rebalance=2.63):
   """
   Args:
     data_l   : [1, height, width, 1]
