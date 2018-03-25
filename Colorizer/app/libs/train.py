@@ -27,12 +27,17 @@ CNN = net.encode()
 # Define BatchSize
 BATCH_SIZE = 50
 
+if BATCH_SIZE < TRAIN_DATA_SIZE:
+    steps = TRAIN_DATA_SIZE / BATCH_SIZE
+else:
+    steps = 1
+
 #########################################
 # Comment next three lines while testing.
 #########################################
 # Train model
 train_batch = utils.image_l_a_b_gen(TRAIN_DATA, BATCH_SIZE)
-CNN.fit_generator(train_batch, epochs=1000)
+CNN.fit_generator(train_batch, epochs=1000, steps_per_epoch=steps)
 
 # Save model
 model.save("model.h5")
