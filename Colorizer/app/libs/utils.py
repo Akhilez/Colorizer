@@ -11,17 +11,6 @@ from resizeimage import resizeimage
 from keras.preprocessing.image import ImageDataGenerator, array_to_img, img_to_array, load_img
 from skimage.color import rgb2lab, lab2rgb, rgb2gray
 
-def decode(data_l, data_ab):
-    """
-    This method combines the L from data_l and AB from data_ab.
-    It returns a LAB image.
-    """
-    
-    canvas = np.zeros((256, 256, 3))
-    canvas[:,:,0] = data_l
-    canvas[:,:,1:] = data_ab
-    return canvas
-
 def resize_image(img, width, height):
     """
     This method resizes the image.
@@ -45,21 +34,21 @@ def image_l_a_b_gen(train_data, batch_size):
     for batch in datagen.flow(train_data, batch_size=batch_size):
         lab_batch = rgb2lab(batch)
         l_batch = lab_batch[:, :, :, 0]
-        a_b_batch = lab_batch[:, :, :, 1:] / 128        
+        a_b_batch = lab_batch[:, :, :, 1:] / 128
         yield (l_batch.reshape(l_batch.shape+(1,)), a_b_batch)
-        
+
 def get_train_data(folder):
     """
     This method returns the data required for training.
     """
-    train_data = []     
+    train_data = []
     for filename in os.listdir(folder):
         train_data.append(img_to_array(load_img(resize_image(folder+filename, 256, 256))))
         train_data = np.array(train_data, dtype=float)
-        train_data = 1.0/255*train_data    
+        train_data = 1.0/255*train_data
         #print(train_data.shape)
     return train_data
-    
+
 def get_test_data(folder):
     """
     This method returns the data required for testing.
@@ -71,9 +60,21 @@ def get_test_data(folder):
     test_data = rgb2lab(1.0/255*test_data)
     Xtest = test_data[:, :, :, 0]
     Xtest = Xtest.reshape(Xtest.shape+(1,))
-    Ytest = test_data[:,:,:,1:]
-    Ytest /= 128
+    Ytest = test_data[:,:,:,1:] / 128
     #print(test_data.shape)
     return Xtest,Ytest
 
-
+def decode(data_l, model):
+    """
+    This method combines the L from data_l and AB from model.predict.
+    It returns a RGB image.
+    """
+    data_ab = model.predict(data_l)
+    data_ab *= 128
+    data_l = data_l + 50
+    _, height, width, _ = data_l.shape
+    canvas = np.zeros((height, width, 3))
+    canvas[:,:,0] = data_l
+    canvas[:,:,1:] = data_ab
+    img_rgb = lab2rgb(canvas)
+    return img_rgb

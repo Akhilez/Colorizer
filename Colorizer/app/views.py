@@ -1,13 +1,11 @@
 from django.shortcuts import render
 from django.http import HttpResponse
 from django.core.files.storage import FileSystemStorage
-
 from app.libs import test
 import os
 from django.conf import settings
 from .forms import ImageForm
 
-# Create your views here.
 def index(request):
     context = {}
     if request.method == 'POST':
@@ -20,7 +18,7 @@ def index(request):
                 os.remove(fullname)
             fs = FileSystemStorage()
             filename = fs.save(image.name, image)
-            test.guess()
+            test.colorize()
             context['success'] = 'success'
     else:
         form = ImageForm()
