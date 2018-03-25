@@ -87,19 +87,8 @@
 }
 </style>
 </head>
-<body datasqstyle="{&quot;paddingTop&quot;:null}" datasquuid="a1a5331e-964a-4623-a4a2-336411875353" style="padding-top: 40px;">
+<body datasqstyle="{&quot;paddingTop&quot;:null}" datasquuid="a1a5331e-964a-4623-a4a2-336411875353" style="padding-top: 10px;">
 <!-- Page Wrap -->
-<nav class="navbar navbar-default">
-	<div class="container-fluid container">
-		<div class="navbar-header">
-			<a class="navbar-brand img" style="padding:0px;" href=""><img src="{% static 'kmitlogo.jpg' %}" width="60px" height="50px"></a>
-		</div>
-		<ul class="nav navbar-nav">
-			<li><a href="">Colorizer!</a></li>
-		</ul>
-	</div>
-</nav>
-
 <div id="wrap">
   <div class="intro-style">
     <div class="intro-bg" style="height:600px; position:relative;">
@@ -107,12 +96,12 @@
       <div class="container">
         <div class="position-center-center">
           <!--<div class="animate bounceIn" data-wow-delay="0.9s" style="visibility: visible; animation-delay: 0.9s; animation-name: bounceIn;"> <img src="static/ZAP_files/logo.png" alt="">-->
-            <h3 class="text-white font-normal text-uppercase margin-top-50">Turning black and white photos to colour<b></h4><br>
+            <h3 class="font-montserrat" style="color:#ffffff">TURNING BLACK AND WHITE PHOTOS TO COLOUR</h4><br>
             <ul class="font-montserrat" style="color:rgba(255,255,255,0.8); line-height:30px;">
               <!--<li class="text-uppercase"> &nbsp; | &nbsp; COPORATE &nbsp; | &nbsp; PORTFOLIO &nbsp; | &nbsp; BUSINESS  &nbsp; | &nbsp; PERSONAL  &nbsp; | &nbsp; RESUME &nbsp; | &nbsp; CREATIVE  &nbsp; | &nbsp; <br>
                 PHOTOGRAPHY &nbsp; | &nbsp; INDUSTRIAL  &nbsp; | &nbsp; ANIMATION  &nbsp; |<br>-->
               </li>
-            </ul>
+            </ul><br>
             <form enctype="multipart/form-data" method="post" action="">{% csrf_token %}
 							<label class="btn btn-med btn-color btn-file">
 							    Upload Image<input type="file" id="uploadImage" name="image" accept="image/jpg" style="display: none;" />
@@ -129,25 +118,24 @@
 	  <div class="row">
         <div class="col-md-6">
           <div class="heading-block text-center margin-bottom-40 margin-top-50 animate fadeInUp" data-wow-delay="0.2s" style="visibility: hidden; animation-delay: 0.2s; animation-name: none;">
-            <h3>Left Off canvas Menu</h3>
+            <h3>Black and White Image</h3>
             <div class="divider divider-short divider-center"><img class="i-div" src="static/ZAP_files/hammers.png" alt="Divider Icon Image"></div>
           </div>
           <ul class="row">
             <li class="col-md-12 animate fadeIn" data-wow-delay="0.6s" style="visibility: hidden; animation-delay: 0.6s; animation-name: none;">
-              <div class="intro-in"> <img class="img-responsive width-100 NO-CACHE" src="{% static "gray.jpg" %}" alt=""> <a href="http://demos.webicode.com/html/zap/left-menu/index.html" class="intro-hover" target="_blank"> VIEW DEMO </a>
-                <h5>VIEW FULL DEMO</h5>
+              <div class="intro-in"> <img class="img-responsive width-100 NO-CACHE" src="{% static "gray.jpg" %}" alt=""> <a href="{% static "gray.jpg" %}" class="intro-hover" target="_blank"> VIEW FULL SIZE </a>
               </div>
             </li>
           </ul>
         </div>
         <div class="col-md-6">
           <div class="heading-block text-center margin-bottom-40 margin-top-50 animate fadeInUp" data-wow-delay="0.2s" style="visibility: hidden; animation-delay: 0.2s; animation-name: none;">
-            <h3>Vertical Fixed Menu</h3>
+            <h3>Coloured Image</h3>
             <div class="divider divider-short divider-center"><img class="i-div" src="static/ZAP_files/hammers.png" alt="Divider Icon Image"></div>
           </div>
           <ul class="row">
             <li class="col-md-12 animate fadeIn" data-wow-delay="0.8s" style="visibility: hidden; animation-delay: 0.8s; animation-name: none;">
-              <div class="intro-in"> <img class="img-responsive width-100 NO-CACHE" src="{% static "color.jpg" %}" alt=""> <a href="{% static "color.jpg" %}" class="intro-hover" target="_blank"> VIEW DEMO </a></div>
+              <div class="intro-in"> <img class="img-responsive width-100 NO-CACHE" src="{% static "color.jpg" %}" alt=""> <a href="{% static "color.jpg" %}" class="intro-hover" target="_blank"> VIEW FULL SIZE </a></div>
             </li>
           </ul>
         </div>
@@ -217,20 +205,6 @@
         </li>
       </ul>
 
-    </div>
-
-    <div class="container animate fadeInUp" data-wow-delay="0.4s" style="visibility: hidden; animation-delay: 0.4s; animation-name: none;">
-      <ul class="row">
-        <li class="col-md-12 padding-top-100 padding-bottom-100">
-          <h3 class="font-normal">If You Really Like Our Work, Please, Rate us</h3>
-          <br>
-          <img src="static/ZAP_files/stars.jpg" alt=""> <br>
-          <br>
-          <br>
-          <a href="http://goo.gl/1rA4Gl" class="btn btn-large dark font-normal margin-top-0 letter-space-1">PURCHASE NOW</a>
-          <div class="section-p-60px no-padding-t"></div>
-        </li>
-      </ul>
     </div>
   </div>
 </div>
