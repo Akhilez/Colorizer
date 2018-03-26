@@ -12,14 +12,17 @@ from keras.models import load_model
 class Net:
     def __init__(self, train=True):
         self.train=train
-    
+
     def encode(self):
         if self.train == True:
             return self.net()
         else:
             return self.loaded_model()
-    
+
     def net(self):
+        """
+        This method returns a CNN for training.
+        """
         model = Sequential()
         model.add(InputLayer(input_shape=(None, None, 1)))
         model.add(Conv2D(64, (3, 3), activation='relu', padding='same'))
@@ -39,12 +42,9 @@ class Net:
         model.add(UpSampling2D((2, 2)))
         model.compile(optimizer='rmsprop', loss='mse')
         return model
-    
+
     def loaded_model(self):
-        return load_model("model.h5")        
-        
-        
-        
-        
-        
-        
+        """
+        This method returns a loaded_model.
+        """
+        return load_model("model.h5")
