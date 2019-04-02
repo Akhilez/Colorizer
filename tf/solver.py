@@ -4,11 +4,10 @@ from __future__ import print_function
 
 import tensorflow as tf
 import numpy as np
-import re
 
-from ops import *
-from net import Net
-from data import DataSet
+from colorizer.tf.ops import *
+from colorizer.tf.net import Net
+from colorizer.tf.data import DataSet
 import time
 from datetime import datetime
 import os
@@ -86,7 +85,7 @@ class Solver(object):
       #saver1.restore(sess, './models/model.ckpt')
       #nilboy
       summary_writer = tf.summary.FileWriter(self.train_dir, sess.graph)
-      for step in xrange(self.max_steps):
+      for step in range(self.max_steps):
         start_time = time.time()
         t1 = time.time()
         data_l, gt_ab_313, prior_boost_nongray = self.dataset.batch()

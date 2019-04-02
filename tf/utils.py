@@ -32,9 +32,9 @@ def flatten_nd_array(pts_nd,axis=1):
     SHP = np.array(pts_nd.shape)
     nax = np.setdiff1d(np.arange(0,NDIM),np.array((axis))) # non axis indices
     NPTS = np.prod(SHP[nax])
-    axorder = np.concatenate((nax,np.array(axis).flatten()),axis=0)
+    axorder = np.concatenate((nax,np.array(axis).flatten()), axis=0)
     pts_flt = pts_nd.transpose((axorder))
-    pts_flt = pts_flt.reshape(NPTS,SHP[axis])
+    pts_flt = pts_flt.reshape(NPTS, SHP[axis])
     return pts_flt
 
 def unflatten_2d_array(pts_flt,pts_nd,axis=1,squeeze=False):
@@ -282,7 +282,7 @@ def decode(data_l, conv8_313, rebalance=2.63):
   _, height, width, _ = data_l.shape
   data_l = data_l[0, :, :, :]
   conv8_313 = conv8_313[0, :, :, :]
-  enc_dir = 'app/tf/resources'
+  enc_dir = 'colorizer/tf/resources'
   conv8_313_rh = conv8_313 * rebalance
   class8_313_rh = softmax(conv8_313_rh)
 

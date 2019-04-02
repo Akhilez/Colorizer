@@ -1,9 +1,8 @@
-import tensorflow as tf
 import cv2
-from app.tf.utils import *
-from app.tf.net import Net
+from colorizer.tf.utils import *
+from colorizer.tf.net import Net
 from skimage.io import imsave
-from skimage.transform import resize
+from Akhil.settings import BASE_DIR
 
 
 def colorize():
@@ -12,9 +11,10 @@ def colorize():
     it to colour image.
     """
     # Read the B/W image.
-    img = cv2.imread('static/gray.jpg')
+
+    img = cv2.imread(BASE_DIR + '/colorizer/static/colorizer/gray.jpg')
     if len(img.shape) == 3:
-        img = cv2.cvtColor(img,cv2.COLOR_BGR2GRAY)
+        img = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
     img = img[None, :, :, None]
 
     data_l = (img.astype(dtype=np.float32)) / 255.0 * 100 - 50
@@ -28,4 +28,4 @@ def colorize():
     img_rgb = decode(data_l, model)
 
     # Save the Colour image.
-    imsave('static/color.jpg', img_rgb)
+    imsave('colorizer/static/colorizer/color.jpg', img_rgb)

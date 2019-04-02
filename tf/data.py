@@ -9,10 +9,10 @@ import cv2
 import numpy as np
 import queue
 from threading import Thread as Process
-#from multiprocessing import Process,Queue
+from multiprocessing import Process,Queue
 import time
 
-from app.tf.utils import *
+from colorizer.tf.utils import *
 
 from skimage.io import imread
 from skimage.transform import resize

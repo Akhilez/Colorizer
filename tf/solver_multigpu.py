@@ -6,9 +6,9 @@ import tensorflow as tf
 import numpy as np
 import re
 
-from ops import *
-from net import Net
-from data import DataSet
+from colorizer.tf.ops import *
+from colorizer.tf.net import Net
+from colorizer.tf.data import DataSet
 import time
 from datetime import datetime
 import os
@@ -147,7 +147,7 @@ class SolverMultigpu(object):
       #saver1.restore(sess, self.pretrain_model)
       #nilboy
       summary_writer = tf.summary.FileWriter(self.train_dir, sess.graph)
-      for step in xrange(self.max_steps):
+      for step in range(self.max_steps):
         start_time = time.time()
         t1 = time.time()
         feed_dict = {}

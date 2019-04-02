@@ -1,0 +1,4 @@
+Download the trained model from the link below
+https://drive.google.com/uc?export=download&id=0B-yiAeTLLamRWVVDQ1VmZ3BxWG8
+https://storage.googleapis.com/site-storage-akhil/model.ckpt
+

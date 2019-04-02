@@ -1,9 +1,9 @@
 import sys
 sys.path.append('./')
 from optparse import OptionParser
-from solver import Solver
-from solver_multigpu import SolverMultigpu
-from utils import process_config
+from colorizer.tf.solver import Solver
+from colorizer.tf.solver_multigpu import SolverMultigpu
+from colorizer.tf.utils import process_config
 
 parser = OptionParser()
 parser.add_option("-c", "--conf", dest="configure",  

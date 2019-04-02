@@ -2,16 +2,8 @@ from __future__ import absolute_import
 from __future__ import division
 from __future__ import print_function
 
-import tensorflow as tf
-import numpy as np
-import re
+from colorizer.tf.ops import *
 
-from app.tf.ops import *
-from app.tf.data import DataSet
-import time
-from datetime import datetime
-import os
-import sys
 
 class Net(object):
 
@@ -28,7 +20,7 @@ class Net(object):
     model = self.inference(data_l)
     saver = tf.train.Saver()
     with tf.Session() as sess:
-      saver.restore(sess, 'app/tf/models/model.ckpt')
+      saver.restore(sess, 'colorizer/tf/models/model.ckpt')
       model = sess.run(model)
     return model
   
